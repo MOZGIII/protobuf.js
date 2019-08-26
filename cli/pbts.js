@@ -169,6 +169,9 @@ exports.main = function(args, callback) {
                 var imports = {
                     $protobuf: "protobufjs"
                 };
+                if (out.find(x => x.indexOf("gRPC.Metadata") > -1)) {
+                    imports["gRPC"] = "grpc";
+                }
                 importArray.forEach(function(importItem) {
                     imports[getImportName(importItem)] = importItem;
                 });
